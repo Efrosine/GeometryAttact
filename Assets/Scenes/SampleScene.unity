@@ -1145,7 +1145,7 @@ MonoBehaviour:
   JumpForce: 10
   jumableGround:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   joystick: {fileID: 926243677}
 --- !u!1001 &671717156
 PrefabInstance:
