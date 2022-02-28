@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] private float MovementSoeed;
     [SerializeField] private float JumpForce;
     [SerializeField] private LayerMask jumableGround;
@@ -14,25 +11,24 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rigidbody;
     private BoxCollider2D coll;
 
-    void Start()
+    private void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
     }
 
-
-    void Update()
+    private void Update()
     {
-       
     }
 
     private void FixedUpdate()
     {
-        var movement =0f;
-        if(joystick.Horizontal >= .2f)
+        var movement = 0f;
+        if (joystick.Horizontal >= .2f)
         {
             movement = 1f;
-        }else if(joystick.Horizontal <= -.2f)
+        }
+        else if (joystick.Horizontal <= -.2f)
         {
             movement = -1f;
         }
@@ -41,15 +37,19 @@ public class PlayerMovement : MonoBehaviour
             movement = 0f;
         }
 
-        if(joystick.Vertical >= .5f && isGrounded())
+        if (joystick.Vertical >= .5f && isGrounded())
         {
             rigidbody.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
         }
-      
+
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSoeed;
     }
 
-    bool isGrounded()
+    private void moveCharacter(Vector2 direction)
+    {
+    }
+
+    private bool isGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumableGround);
     }
