@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Animation : MonoBehaviour
 {
-    Animator anim;
-    Rigidbody2D rb;
+    private Animator anim;
+    private Rigidbody2D rb;
 
-    string currentAnim;
-    enum MovementState { fall, idle, jump, run }
-    string[] stringState = { "Fall", "Idle", "Jump", "Run" };
+    private string currentAnim;
+
+    private enum MovementState
+    { fall, idle, jump, run }
+
+    private string[] stringState = { "Fall", "Idle", "Jump", "Run" };
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -20,7 +21,7 @@ public class Animation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         MovementState state;
         float move = Input.GetAxisRaw("Horizontal");
@@ -29,7 +30,8 @@ public class Animation : MonoBehaviour
         if (rb.velocity.y > .1f)
         {
             state = MovementState.jump;
-        }else if (rb.velocity.y < -.1f)
+        }
+        else if (rb.velocity.y < -.1f)
         {
             state = MovementState.fall;
         }
@@ -37,7 +39,7 @@ public class Animation : MonoBehaviour
         ChangeAnim(stringState[(int)state]);
     }
 
-    void ChangeAnim(string animState)
+    private void ChangeAnim(string animState)
     {
         if (currentAnim == animState) return;
         anim.Play(animState);
