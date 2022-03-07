@@ -22,14 +22,19 @@ public class Tower : MonoBehaviour
     private void Update()
     {
         checkRange();
+
+        if (currentTarget == null)
+        {
+            return;
+        }
+
         barellMove();
 
-        if (Time.time > nextTimetoShoot && currentTarget != null)
+        if (Time.time > nextTimetoShoot)
         {
             nextTimetoShoot = Time.time + timeBettwenShoot;
             shoot();
         }
-        else GetComponent<SpriteRenderer>().color = Color.white;
     }
 
     private bool checkRange()

@@ -35,7 +35,6 @@ public class Animation : MonoBehaviour
         {
             state = MovementState.fall;
         }
-        Debug.Log((int)state);
         ChangeAnim(stringState[(int)state]);
     }
 
