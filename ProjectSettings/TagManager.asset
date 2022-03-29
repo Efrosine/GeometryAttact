@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trap
+  - Coin
+  - Key
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - UI
   - Ground
   - Player
-  - 
+  - Trap
   - 
   - 
   - 
@@ -47,4 +49,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3128685243
+    locked: 0
+  - name: UI
+    uniqueID: 910318995
     locked: 0
